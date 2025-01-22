@@ -28,7 +28,7 @@ jobs:
       #     run: npm test
 
       - name: Build Docker image
-        run: docker build -t breizhshop-apigateway .
+        run: docker build -t sacha2dev/breizhshop-apigateway .
 
       - name: Log in to DockerHub
         uses: docker/login-action@v2
