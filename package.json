@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test": "jest --setupFiles dotenv/config --runInBand",
     "build": "tsc --project build.tsconfig.json && tsc-alias -p tsconfig.json",
     "start": "node build/index.js",
     "dev": "nodemon -r tsconfig-paths/register src/index.ts",
