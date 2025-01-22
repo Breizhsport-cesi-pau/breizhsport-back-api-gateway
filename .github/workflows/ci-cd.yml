@@ -38,4 +38,4 @@ jobs:
 
       - name: Push Docker image
         if: success()
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/breizhshop-apigateway:latest
+        run: docker push sacha2dev/breizhshop-apigateway:latest
