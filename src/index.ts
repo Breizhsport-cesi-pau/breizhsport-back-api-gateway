@@ -2,8 +2,6 @@ import createExpressServer from "./server";
 import helmet from "helmet";
 import permissionsPolicy from "permissions-policy";
 
-const sequelize = require('./config/database'); 
-
 const app = createExpressServer();
 const port = process.env.PORT;
 
@@ -47,14 +45,6 @@ app.use((req, res, next) => {
   next();
 });
 
-// Synchronisation de la base de données
-sequelize.sync({ alter: true })
-  .then(() => {
-    console.log('Base de données synchronisée');
-    app.listen(port, () => {
-      console.log(`Serveur démarré sur http://localhost:${port}`);
-    });
-  })
-  .catch((err: any) => {
-    console.error('Erreur lors de la synchronisation de la base de données :', err);
-  });
+app.listen(port, () => {
+  console.log(`Serveur démarré sur http://localhost:${port}`);
+});
