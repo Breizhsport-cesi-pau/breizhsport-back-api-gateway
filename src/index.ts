@@ -2,8 +2,6 @@ import createExpressServer from "./server";
 import helmet from "helmet";
 import permissionsPolicy from "permissions-policy";
 
-
-
 const app = createExpressServer();
 const port = process.env.PORT;
 
@@ -47,3 +45,6 @@ app.use((req, res, next) => {
   next();
 });
 
+app.listen(port, () => {
+  console.log(`Serveur démarré sur http://localhost:${port}`);
+});

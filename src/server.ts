@@ -7,22 +7,21 @@ dotenv.config();
 const createExpressServer = (): Express => {
   const app: Express = express();
 
+  app.get("/healthcheck", (req: Request, res: Response) => {
+    res.send("OK");
+  });
+
   app.get("/", (req: Request, res: Response) => {
     res.send("OK");
   });
 
   app.use('/users', createProxyMiddleware({
-    target: 'http://localhost:3001',
+    target: process.env.URL_USER,
     changeOrigin: true
 }));
 
 app.use('/products', createProxyMiddleware({
-  target: 'http://localhost:3002',
-  changeOrigin: true
-}));
-
-app.use('/variants', createProxyMiddleware({
-  target: 'http://localhost:3003',
+  target: process.env.URL_PRODUCT,
   changeOrigin: true
 }));
 
